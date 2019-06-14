@@ -13,6 +13,9 @@ public class Blog {
     private Long id;
 
     private String title;
+
+    @Basic(fetch = FetchType.LAZY)
+    @Lob
     private String content;
     private String firstPicture;
     private String flag;
@@ -22,6 +25,17 @@ public class Blog {
     private boolean commentabled; //评论开启
     private boolean published; //是否发布
     private boolean recommend; //推荐
+
+    @Transient // 不会保存到数据库
+    private String tagIds;
+
+    public String getTagIds() {
+        return tagIds;
+    }
+
+    public void setTagIds(String tagIds) {
+        this.tagIds = tagIds;
+    }
 
     @Temporal(TemporalType.TIMESTAMP)
     private Date createTime;
