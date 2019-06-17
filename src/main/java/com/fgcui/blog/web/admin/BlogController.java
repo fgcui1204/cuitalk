@@ -76,7 +76,13 @@ public class BlogController {
         blog.setCategory(categoryService.getCategory(blog.getCategory().getId()));
         blog.setTags(tagService.listTags(blog.getTagIds()));
 
-        Blog result = blogService.saveBlog(blog);
+        Blog result;
+        if (blog.getId() == null) {
+            result = blogService.saveBlog(blog);
+        } else {
+            result = blogService.updateBlog(blog.getId(), blog);
+        }
+
 
         if (result == null) {
             attributes.addFlashAttribute("message", "添加失败");

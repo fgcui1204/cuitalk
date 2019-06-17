@@ -25,9 +25,18 @@ public class Blog {
     private boolean commentabled; //评论开启
     private boolean published; //是否发布
     private boolean recommend; //推荐
+    private String description;
 
     @Transient // 不会保存到数据库
     private String tagIds;
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
     public String getTagIds() {
         return tagIds;
@@ -105,8 +114,14 @@ public class Blog {
                 ", commentabled=" + commentabled +
                 ", published=" + published +
                 ", recommend=" + recommend +
+                ", description='" + description + '\'' +
+                ", tagIds='" + tagIds + '\'' +
                 ", createTime=" + createTime +
                 ", updateTime=" + updateTime +
+                ", category=" + category +
+                ", tags=" + tags +
+                ", user=" + user +
+                ", comments=" + comments +
                 '}';
     }
 

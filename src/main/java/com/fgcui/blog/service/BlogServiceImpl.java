@@ -4,6 +4,7 @@ import com.fgcui.blog.bean.BlogQuery;
 import com.fgcui.blog.exception.NotFoundException;
 import com.fgcui.blog.po.Blog;
 import com.fgcui.blog.repository.BlogRepository;
+import com.fgcui.blog.util.MyBeanUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -73,7 +74,8 @@ public class BlogServiceImpl implements BlogService {
     @Override
     public Blog updateBlog(Long id, Blog blog) {
         Blog result = blogRepository.findById(id).orElseThrow(() -> new NotFoundException("博客不存在"));
-        BeanUtils.copyProperties(result, blog);
+        BeanUtils.copyProperties(blog, result, MyBeanUtils.getNullPropertyNames(result));
+        result.setUpdateTime(new Date());
         return blogRepository.save(result);
     }
 
