@@ -15,8 +15,8 @@
 <div class="ui attached pointing menu">
     <div class="ui container">
         <div class="right menu">
-            <a href="#" class="item">发布</a>
-            <a href="#" class="active teal item">列表</a>
+            <a href="#" th:href="@{/admin/blogs/input}" class="item">发布</a>
+            <a href="#" th:href="@{/admin/blogs}" class="active teal item">列表</a>
         </div>
     </div>
 </div>
@@ -82,7 +82,7 @@
                     <td th:text="${blog.updateTime}">2019-07-01</td>
                     <td>
                         <a href="#" th:href="@{/admin/blogs/{id}/edit(id=${blog.id})}" class="ui mini teal basic button">编辑</a>
-                        <a href="#" th:href="@{/admin/blogs/{id}/edit(id=${blog.id})}" class="ui mini red basic button">删除</a>
+                        <a href="#" th:href="@{/admin/blogs/{id}/delete(id=${blog.id})}" class="ui mini red basic button">删除</a>
                     </td>
                 </tr>
                 </tbody>
