@@ -16,6 +16,8 @@ public interface CategoryService {
 
     List<Category> listCategory();
 
+    List<Category> listTopCategory(Integer size);
+
     Category updateCategory(Long id, Category category);
 
     Category getCategoryByName(String name);

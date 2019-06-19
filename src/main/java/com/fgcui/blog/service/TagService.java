@@ -23,4 +23,6 @@ public interface TagService {
     Tag getTag(Long id);
 
     Tag updateTag(Long id, Tag tag);
+
+    List<Tag> listTopTags(int size);
 }
