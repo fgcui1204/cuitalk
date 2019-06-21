@@ -4,6 +4,7 @@ import com.fgcui.blog.bean.BlogQuery;
 import com.fgcui.blog.exception.NotFoundException;
 import com.fgcui.blog.po.Blog;
 import com.fgcui.blog.repository.BlogRepository;
+import com.fgcui.blog.util.MarkdownUtils;
 import com.fgcui.blog.util.MyBeanUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,6 +35,20 @@ public class BlogServiceImpl implements BlogService {
     public Blog getBlog(Long id) {
         return blogRepository.getOne(id);
     }
+
+    @Override
+    public Blog getAndConvertBlog(Long id) {
+        Blog blog = blogRepository.getOne(id);
+
+        Blog result = new Blog();
+
+        BeanUtils.copyProperties(blog, result);
+        String content = result.getContent();
+        String formattedContent = MarkdownUtils.markdownToHtmlExtensions(content);
+        result.setContent(formattedContent);
+        return result;
+    }
+
 
     @Override
     public Page<Blog> listBlog(Pageable pageable, BlogQuery blog) {

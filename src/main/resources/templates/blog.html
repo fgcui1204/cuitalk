@@ -18,67 +18,46 @@
         <div class="ui top attached segment">
             <div class="ui horizontal link list">
                 <div class="item">
-                    <img src="https://picsum.photos/id/1005/100/100" alt="" class="ui avatar image">
+                    <img src="https://picsum.photos/id/1005/100/100" th:src="@{${blog.user.avatar}}" alt="" class="ui avatar image">
                     <div class="content">
-                        <a href="#" class="header">
+                        <a href="#" class="header" th:text="${blog.user.nickname}">
                             崔福罡
                         </a>
                     </div>
                 </div>
                 <div class="item">
-                    <i class="calendar icon"></i>2019-07-10
+                    <i class="calendar icon"></i><span th:text="${#dates.format(blog.updateTime, 'yyyy-MM-dd')}">2019-07-10 </span>
                 </div>
                 <div class="item">
-                    <i class="eye icon"></i> 1123
+                    <i class="eye icon"></i> <span th:text="${blog.views}"></span>
                 </div>
             </div>
         </div>
 
         <div class="ui attached segment">
             <!--图片区域-->
-            <img src="https://picsum.photos/id/1005/500/500" alt="" class="ui fluid rounded image">
+            <img src="https://picsum.photos/id/1005/500/500" th:src="@{${blog.firstPicture}}" alt="" class="ui fluid rounded image">
         </div>
 
         <div class="ui attached padded segment">
             <!--内容区域-->
             <div class="ui right aligned basic segment">
-                <div class="ui orange basic label">原创</div>
+                <div class="ui orange basic label" th:text="${blog.flag}">原创</div>
             </div>
 
-            <h2 class="ui center aligned header">你真的财务自由吗？</h2>
+            <h2 class="ui center aligned header" th:text="${blog.title}">你真的财务自由吗？</h2>
 
             <br>
 
 
 
-            <div id="content" class="typo js-toc-content typo-selection m-padded-left-right-responsive m-padded-tb-large">
-                <pre><code class="language-css">
+            <div id="content" class="typo js-toc-content typo-selection m-padded-left-right-responsive m-padded-tb-large" th:utext="${blog.content}">
 
-                      $('#payButton').popup({
-            popup: $('.payQRCode.popup'),
-            on: 'click',
-            position: 'bottom center'
-        })
-
-                </code>
-
-                </pre>
-                <p>
-                    虎扑6月1日讯 雄鹿球员扬尼斯-阿德托昆博在接受了The Athletic采访。
-
-                    阿德托昆博表示他在会研究联盟其他优秀球员应对常规赛的方式。
-
-                    “我在想勒布朗（詹姆斯）是如何应对常规赛的，或者是科怀（伦纳德）和KD（凯文-杜兰特），以及其他优秀的球员，你有注意过他们是如何开启新赛季的吗？”阿德托昆博说道，“你又见过我是如何开启新赛季的吗？我就像是撞到了一堵墙上。”
-
-                    “赛季的进程就像是一场马拉松，那些没有经验的人心里会想，‘我要在开局就全速奔跑，’经过十分钟之后，他们就陷入了疲惫，然后就再也无法找回开局的能量感。而那些经验丰富的人，他们的内心想法是，‘这是一场漫长的旅程，’他们会循序渐进，他们会非常非常耐心。他们知道需要在何时加速，这里面有很大的学问，我必须要学习。”阿德托昆博说道。
-
-                    阿德托昆博也表示自己在东部决赛中从伦纳德身上学到了很多东西，他将在休赛期打磨自己的中距离投篮。
-                </p>
             </div>
 
             <!--标签-->
             <div class="m-padded-left-right-responsive">
-                <div class="ui basic teal left pointing label">方法论</div>
+                <div class="ui basic teal left pointing label" th:each="tag : ${blog.tags}" th:text="${tag.name}">方法论</div>
             </div>
 
             <!--赞赏-->
@@ -90,11 +69,11 @@
                 <div class="ui orange basic label">
                     <div class="ui images" style="font-size: inherit !important;">
                         <div class="image">
-                            <img src="../static/images/apple-touch-icon-60x60.png" alt="" class="ui rounded bordered image" style="width: 120px">
+                            <img th:src="@{/images/apple-touch-icon-60x60.png}" src="../static/images/apple-touch-icon-60x60.png" alt="" class="ui rounded bordered image" style="width: 120px">
                             <div>支付宝</div>
                         </div>
                         <div class="image">
-                            <img src="../static/images/apple-touch-icon-60x60.png" alt="" class="ui rounded bordered image" style="width: 120px">
+                            <img src="../static/images/apple-touch-icon-60x60.png" th:src="@{/images/apple-touch-icon-60x60.png}" alt="" class="ui rounded bordered image" style="width: 120px">
                             <div>微信</div>
                         </div>
                     </div>
@@ -107,10 +86,9 @@
             <div class="ui middle aligned grid">
                 <div class="eleven wide column">
                     <ui class="list">
-                        <li>作者：崔福罡</li>
-                        <li>发表时间：崔福罡</li>
-                        <li>版权声明：崔福罡</li>
-                        <li>公众号转载：崔福罡</li>
+                        <li>作者：<span th:text="${blog.user.nickname}"></span></li>
+                        <li>发表时间：<span th:text="${#dates.format(blog.updateTime, 'yyy-MM-dd HH:mm')}"></span></li>
+                        <li>版权声明：自由转载</li>
                     </ui>
                 </div>
 
@@ -259,7 +237,8 @@
 <script th:src="@{/lib/prism/prism.js}"></script>
 <script th:src="@{/lib/waypoints/jquery.waypoints.min.js}"></script>
 
-    <script>
+    <script th:inline="javascript">
+
         $('.menu.toggle').click(function() {
             $('.m-item').toggleClass('m-mobile-hide');
         });
@@ -280,7 +259,7 @@
             position: 'bottom center'
         })
         $('.toc-btn').popup({
-            popup: $('.toc-container'),
+            popup: $('.toc-container.popup'),
             on: 'hover',
             position: 'left center'
         });
@@ -290,8 +269,10 @@
             position: 'left center'
         });
 
+        var serverUtl = "http://www.cuitalk.com";
+        var url = /*[[@{/blog/{id}(id=${blog.id})}]]*/"";
         var qrcode = new QRCode("qrcode", {
-            text: "http://jindo.dev.naver.com/collie",
+            text: serverUtl + url,
             width: 110,
             height: 110,
             colorDark : "#000000",

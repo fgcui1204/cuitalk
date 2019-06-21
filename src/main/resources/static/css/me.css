@@ -2,6 +2,11 @@ body {
     background: url("../images/full-bloom.png");
 }
 
+.typo li {
+    font-weight: 300;
+    padding: 4px 0;
+}
+
 .m-padded-mini {
     padding: 0.2em !important;
 }
