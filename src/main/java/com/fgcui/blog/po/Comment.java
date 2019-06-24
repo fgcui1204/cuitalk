@@ -16,6 +16,7 @@ public class Comment {
     private String email;
     private String content;
     private String avatar;
+    private boolean AdminComment;
 
     @Temporal(TemporalType.TIMESTAMP)
     private Date createTime;
@@ -43,6 +44,14 @@ public class Comment {
                 ", avatar='" + avatar + '\'' +
                 ", createTime=" + createTime +
                 '}';
+    }
+
+    public boolean isAdminComment() {
+        return AdminComment;
+    }
+
+    public void setAdminComment(boolean adminComment) {
+        AdminComment = adminComment;
     }
 
     public Blog getBlog() {
