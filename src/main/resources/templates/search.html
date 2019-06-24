@@ -33,8 +33,7 @@
                 <div class="ui middle aligned mobile reversed stackable grid">
                     <div class="eleven wide column">
                         <h3 class="ui header">
-                            <a href="" class="m-black" target="_blank" th:text="${blog.title}">你真的财务自由吗？</a>
-
+                            <a href="" class="m-black" target="_blank" th:href="@{/blog/{id}(id=${blog.id})}" th:text="${blog.title}">你真的财务自由吗？</a>
                         </h3>
                         <p class="m-text" th:text="|${blog.description}......|">
                             你真的财务自由吗？你真的财务自由吗？你真的财务自由吗？你真的财务自由吗？你真的财务自由吗？
