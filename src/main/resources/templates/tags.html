@@ -19,263 +19,81 @@
                     <h3 class="ui teal header">标签</h3>
                 </div>
                 <div class="right aligned column">
-                    共 <h2 class="ui orange header m-inline-block m-text-thin"> 14 </h2> 个
+                    共 <h2 class="ui orange header m-inline-block m-text-thin"  th:text="${#arrays.length(tags)}"> 14 </h2> 个
                 </div>
             </div>
         </div>
 
 
         <div class="ui attached segment m-padded-tb-large">
-            <a href="#" target="_blank" class="ui teal basic left pointing label m-margin-tb-tiny">
-                方法论 <div class="detail">23</div>
-            </a>
-
-            <a href="#" target="_blank" class="ui basic left pointing label m-margin-tb-tiny">
-                方法论 <div class="detail">23</div>
-            </a>
-
-
-            <a href="#" target="_blank" class="ui basic left pointing label m-margin-tb-tiny">
-                方法论 <div class="detail">23</div>
-            </a>
-
-            <a href="#" target="_blank" class="ui basic left pointing label m-margin-tb-tiny">
-                方法论 <div class="detail">23</div>
-            </a>
-
-            <a href="#" target="_blank" class="ui basic left pointing label m-margin-tb-tiny">
-                方法论 <div class="detail">23</div>
+            <a href="#" th:href="@{/tags/{id}(id=${tag.id})}" th:classappend="${tag.id==activeTagId} ? teal"  th:each="tag : ${tags}" class="ui basic left pointing label m-margin-tb-tiny">
+                <span th:text="${tag.name}">方法论  </span><div class="detail" th:text="${#arrays.length(tag.blogs)}">23</div>
             </a>
         </div>
 
         <div class="ui top attached segment teal">
-            <div class="ui padded vertical segment m-padded-tb-large m-mobile-left-right-clear">
-                <div class="ui mobile reversed stackable grid">
+            <div class="ui padded vertical segment m-padded-tb-large"  th:each="blog: ${page.content}">
+                <div class="ui middle aligned mobile reversed stackable grid">
                     <div class="eleven wide column">
                         <h3 class="ui header">
-                            你真的财务自由吗？
+                            <a href="" class="m-black" target="_blank" th:href="@{/blog/{id}(id=${blog.id})}" th:text="${blog.title}">你真的财务自由吗？</a>
                         </h3>
-                        <p class="m-text">
+                        <p class="m-text" th:text="|${blog.description}......|">
                             你真的财务自由吗？你真的财务自由吗？你真的财务自由吗？你真的财务自由吗？你真的财务自由吗？
                             你真的财务自由吗？你真的财务自由吗？你真的财务自由吗？
                         </p>
-                        <div class="ui stackable grid">
+                        <div class="ui grid">
                             <div class="row">
                                 <div class="eleven wide column">
                                     <div class="ui horizontal mini link list">
                                         <div class="item">
-                                            <img src="https://picsum.photos/id/1005/100/100" alt="" class="ui avatar image">
+                                            <img src="https://picsum.photos/id/1005/100/100" th:src="@{${blog.user.avatar}}" alt="" class="ui avatar image">
                                             <div class="content">
-                                                <a href="#" class="header">
+                                                <a href="#" class="header" th:text="${blog.user.nickname}">
                                                     崔福罡
                                                 </a>
                                             </div>
                                         </div>
                                         <div class="item">
-                                            <i class="calendar icon"></i>2019-07-10
+                                            <i class="calendar icon"></i><span th:text="${#dates.format(blog.updateTime, 'yyyy-MM-dd')}">2019-07-10 </span>
                                         </div>
                                         <div class="item">
-                                            <i class="eye icon"></i> 1123
+                                            <i class="eye icon"></i> <span th:text="${blog.views}">1123</span>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="five wide column right aligned">
-                                    <a href="#" target="_blank" class="ui teal basic label m-padded-tiny m-text-thin">认知升级</a>
+                                    <a href="#" target="_blank" class="ui teal basic label m-padded-tiny m-text-thin" th:text="${blog.category.name}">认知升级</a>
                                 </div>
                             </div>
 
                             <div class="row">
                                 <div class="column">
-                                    <a href="" class="ui basic teal left pointing label m-padded-mini m-text-thin">
-                                        方法论
-                                    </a>
+                                    <a href="#" th:href="@{/tags/{id}(id=${tag.id})}" class="ui basic left pointing label m-padded-mini m-text-thin"  th:classappend="${tag.id==activeTagId} ? teal" th:each="tag: ${blog.tags}" th:text="${tag.name}"></a>
                                 </div>
                             </div>
-
                         </div>
                     </div>
 
                     <div class="five wide column">
-                        <a href="#" target="_blank">
-                            <img src="https://picsum.photos/id/103/800/450" alt="" class="ui rounded image">
+                        <a href="#" th:href="@{/blog/{id}(id=${blog.id})}" target="_blank">
+                            <img src="https://picsum.photos/id/103/800/450" th:src="@{${blog.firstPicture}}" alt="" class="ui rounded image">
                         </a>
                     </div>
                 </div>
             </div>
-
-            <div class="ui padded vertical segment m-padded-tb-large m-mobile-left-right-clear">
-                <div class="ui mobile reversed stackable grid">
-                    <div class="eleven wide column">
-                        <h3 class="ui header">
-                            你真的财务自由吗？
-                        </h3>
-                        <p class="m-text">
-                            你真的财务自由吗？你真的财务自由吗？你真的财务自由吗？你真的财务自由吗？你真的财务自由吗？
-                            你真的财务自由吗？你真的财务自由吗？你真的财务自由吗？
-                        </p>
-                        <div class="ui stackable grid">
-                            <div class="row">
-                                <div class="eleven wide column">
-                                    <div class="ui horizontal mini link list">
-                                        <div class="item">
-                                            <img src="https://picsum.photos/id/1005/100/100" alt="" class="ui avatar image">
-                                            <div class="content">
-                                                <a href="#" class="header">
-                                                    崔福罡
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="item">
-                                            <i class="calendar icon"></i>2019-07-10
-                                        </div>
-                                        <div class="item">
-                                            <i class="eye icon"></i> 1123
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="five wide column right aligned">
-                                    <a href="#" target="_blank" class="ui teal basic label m-padded-tiny m-text-thin">认知升级</a>
-                                </div>
-                            </div>
-
-                            <div class="row">
-                                <div class="column">
-                                    <a href="" class="ui basic teal left pointing label m-padded-mini m-text-thin">
-                                        方法论
-                                    </a>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-
-                    <div class="five wide column">
-                        <a href="#" target="_blank">
-                            <img src="https://picsum.photos/id/103/800/450" alt="" class="ui rounded image">
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="ui padded vertical segment m-padded-tb-large m-mobile-left-right-clear">
-                <div class="ui mobile reversed stackable grid">
-                    <div class="eleven wide column">
-                        <h3 class="ui header">
-                            你真的财务自由吗？
-                        </h3>
-                        <p class="m-text">
-                            你真的财务自由吗？你真的财务自由吗？你真的财务自由吗？你真的财务自由吗？你真的财务自由吗？
-                            你真的财务自由吗？你真的财务自由吗？你真的财务自由吗？
-                        </p>
-                        <div class="ui stackable grid">
-                            <div class="row">
-                                <div class="eleven wide column">
-                                    <div class="ui horizontal mini link list">
-                                        <div class="item">
-                                            <img src="https://picsum.photos/id/1005/100/100" alt="" class="ui avatar image">
-                                            <div class="content">
-                                                <a href="#" class="header">
-                                                    崔福罡
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="item">
-                                            <i class="calendar icon"></i>2019-07-10
-                                        </div>
-                                        <div class="item">
-                                            <i class="eye icon"></i> 1123
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="five wide column right aligned">
-                                    <a href="#" target="_blank" class="ui teal basic label m-padded-tiny m-text-thin">认知升级</a>
-                                </div>
-                            </div>
-
-                            <div class="row">
-                                <div class="column">
-                                    <a href="" class="ui basic teal left pointing label m-padded-mini m-text-thin">
-                                        方法论
-                                    </a>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-
-                    <div class="five wide column">
-                        <a href="#" target="_blank">
-                            <img src="https://picsum.photos/id/103/800/450" alt="" class="ui rounded image">
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="ui padded vertical segment m-padded-tb-large m-mobile-left-right-clear">
-                <div class="ui mobile reversed stackable grid">
-                    <div class="eleven wide column">
-                        <h3 class="ui header">
-                            你真的财务自由吗？
-                        </h3>
-                        <p class="m-text">
-                            你真的财务自由吗？你真的财务自由吗？你真的财务自由吗？你真的财务自由吗？你真的财务自由吗？
-                            你真的财务自由吗？你真的财务自由吗？你真的财务自由吗？
-                        </p>
-                        <div class="ui stackable grid">
-                            <div class="row">
-                                <div class="eleven wide column">
-                                    <div class="ui horizontal mini link list">
-                                        <div class="item">
-                                            <img src="https://picsum.photos/id/1005/100/100" alt="" class="ui avatar image">
-                                            <div class="content">
-                                                <a href="#" class="header">
-                                                    崔福罡
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="item">
-                                            <i class="calendar icon"></i>2019-07-10
-                                        </div>
-                                        <div class="item">
-                                            <i class="eye icon"></i> 1123
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="five wide column right aligned">
-                                    <a href="#" target="_blank" class="ui teal basic label m-padded-tiny m-text-thin">认知升级</a>
-                                </div>
-                            </div>
-
-                            <div class="row">
-                                <div class="column">
-                                    <a href="" class="ui basic teal left pointing label m-padded-mini m-text-thin">
-                                        方法论
-                                    </a>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-
-                    <div class="five wide column">
-                        <a href="#" target="_blank">
-                            <img src="https://picsum.photos/id/103/800/450" alt="" class="ui rounded image">
-                        </a>
-                    </div>
-                </div>
-            </div>
-
         </div>
 
         <!--底部-->
-        <div class="ui bottom attached segment">
+        <div class="ui bottom attached segment"  th:if="${page.totalPages} > 1">
             <div class="ui middle aligned two column grid">
-                <div class="column">
-                    <a href="#" class="ui teal basic mini button">上一页</a>
-                </div>
-                <div class="right aligned column">
-                    <a href="#" class="ui teal basic mini button">下一页</a>
-                </div>
+                <a href="#" th:href="@{/(page=${page.number} - 1)}" class="ui mini teal basic button" th:unless="${page.first}">
+                    上一页
+                </a>
+
+                <a href="#" th:href="@{/(page=${page.number} + 1)}" class="ui mini teal basic button" th:unless="${page.last}">
+                    下一页
+                </a>
             </div>
         </div>
     </div>
