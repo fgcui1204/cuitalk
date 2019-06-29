@@ -41,8 +41,7 @@
 
                                 </h3>
                                 <p class="m-text" th:text="|${blog.description}......|">
-                                    你真的财务自由吗？你真的财务自由吗？你真的财务自由吗？你真的财务自由吗？你真的财务自由吗？
-                                    你真的财务自由吗？你真的财务自由吗？你真的财务自由吗？
+                                    你真的财务自由吗？
                                 </p>
                                 <div class="ui grid">
                                     <div class="eleven wide column">
@@ -102,13 +101,13 @@
                                 <i class="icon idea"></i>分类
                             </div>
                             <div class="right aligned column">
-                                <a href="#" target="_blank">more <i class="icon angle double right"></i></a>
+                                <a href="#" th:href="@{/categories/-1}" target="_blank">more <i class="icon angle double right"></i></a>
                             </div>
                         </div>
                     </div>
                     <div class="ui segment teal">
                         <div class="ui fluid vertical menu">
-                            <a href="#" class="item"  th:each="category : ${categories}">
+                            <a href="#" th:href="@{/categories/{id}(id=${category.id})}" class="item"  th:each="category : ${categories}">
                                 <span th:text="${category.name}"></span>
                                 <div class="ui teal basic left pointing label" th:text="${#arrays.length(category.blogs)}">
                                     13
@@ -126,12 +125,12 @@
                                 <i class="icon tags"></i>标签
                             </div>
                             <div class="right aligned column">
-                                <a href="#" target="_blank">more <i class="icon angle double right"></i></a>
+                                <a href="#" th:href="@{/tags/-1}" target="_blank">more <i class="icon angle double right"></i></a>
                             </div>
                         </div>
                     </div>
                     <div class="ui segment teal">
-                        <a href="#" target="_blank" class="ui teal basic left pointing label m-margin-tb-tiny"  th:each="tag : ${tags}">
+                        <a href="#" th:href="@{/tags/{id}(id=${tag.id})}" target="_blank" class="ui teal basic left pointing label m-margin-tb-tiny"  th:each="tag : ${tags}">
                             <span th:text="${tag.name}"></span>方法论 <div class="detail" th:text="${#arrays.length(tag.blogs)}">23</div>
                         </a>
                     </div>

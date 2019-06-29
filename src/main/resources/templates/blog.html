@@ -61,27 +61,30 @@
             </div>
 
             <!--赞赏-->
-            <div class="ui center aligned basic segment">
-                <button id="payButton" class="ui orange basic circular button">赞赏</button>
-            </div>
+            <div th:if="${blog.appreciation}">
+                <div class="ui center aligned basic segment" >
+                    <button id="payButton" class="ui orange basic circular button">赞赏</button>
+                </div>
 
-            <div class="ui payQRCode flowing popup transition hidden">
-                <div class="ui orange basic label">
-                    <div class="ui images" style="font-size: inherit !important;">
-                        <div class="image">
-                            <img th:src="@{/images/alipay.png}" src="../static/images/apple-touch-icon-60x60.png" alt="" class="ui rounded bordered image" style="width: 120px">
-                            <div>支付宝</div>
-                        </div>
-                        <div class="image">
-                            <img src="../static/images/apple-touch-icon-60x60.png" th:src="@{/images/wechat.png}" alt="" class="ui rounded bordered image" style="width: 120px">
-                            <div>微信</div>
+                <div class="ui payQRCode flowing popup transition hidden" >
+                    <div class="ui orange basic label">
+                        <div class="ui images" style="font-size: inherit !important;">
+                            <div class="image">
+                                <img th:src="@{/images/alipay.png}" src="../static/images/apple-touch-icon-60x60.png" alt="" class="ui rounded bordered image" style="width: 120px">
+                                <div>支付宝</div>
+                            </div>
+                            <div class="image">
+                                <img src="../static/images/apple-touch-icon-60x60.png" th:src="@{/images/wechat.png}" alt="" class="ui rounded bordered image" style="width: 120px">
+                                <div>微信</div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+
         </div>
 
-        <div class="ui attached positive message">
+        <div class="ui attached positive message" th:if="${blog.shareStatement}">
             <!--信息说明-->
             <div class="ui middle aligned grid">
                 <div class="eleven wide column">
@@ -98,7 +101,7 @@
             </div>
         </div>
 
-        <div class="ui bottom attached segment">
+        <div class="ui bottom attached segment" th:if="${blog.commentabled}">
             <!--留言区域-->
             <div id="comment-container" class="ui teal segment">
                 <div th:fragment="commentList">
