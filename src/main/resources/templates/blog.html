@@ -316,7 +316,7 @@
             $(window).scrollTo($('#comment-form'), 500);
         }
 
-        var serverUtl = "http://www.cuitalk.com";
+        var serverUtl = /*[[#{blog.serverUrl}]]*/;
         var url = /*[[@{/blog/{id}(id=${blog.id})}]]*/"";
         var qrcode = new QRCode("qrcode", {
             text: serverUtl + url,
