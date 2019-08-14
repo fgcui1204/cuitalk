@@ -29,3 +29,5 @@ HELP.md
 .vscode/
 
 log/
+
+.DS_Store
