@@ -319,7 +319,7 @@
             $(window).scrollTo($('#comment-form'), 500);
         }
 
-        var serverUtl = /*[[#{blog.serverUrl}]]*/;
+        var serverUtl = "http://cuitalk.site";
         var url = /*[[@{/blog/{id}(id=${blog.id})}]]*/"";
         var qrcode = new QRCode("qrcode", {
             text: serverUtl + url,
