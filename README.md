@@ -33,7 +33,7 @@ mvn spring-boot:run
 ```aidl
 # 打包：
 
-mvn package -Pprod
+ mvn  clean package  -Dmaven.test.skip=true -Pprod
 
 # 上传
 scp ./target/blog-0.0.1-SNAPSHOT.jar root@47.99.213.239:~/cuitalk/
