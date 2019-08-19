@@ -215,9 +215,9 @@
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: PingFang SC, Verdana, Helvetica Neue, Microsoft Yahei, Hiragino Sans GB, Microsoft Sans Serif, WenQuanYi Micro Hei, sans-serif;
-  font-weight: 100;
-  color: #000;
+  font-family: 'Ma Shan Zheng', cursive;
+  font-weight: 500;
+  color: #666666;
   line-height: 1.35;
 }
 
@@ -230,19 +230,19 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .typo h1, .typo-h1 {
-  font-size: 2em;
+  font-size: 2.2em;
 }
 
 .typo h2, .typo-h2 {
-  font-size: 1.8em;
+  font-size: 2.0em;
 }
 
 .typo h3, .typo-h3 {
-  font-size: 1.6em;
+  font-size: 1.8em;
 }
 
 .typo h4, .typo-h4 {
-  font-size: 1.4em;
+  font-size: 1.6em;
 }
 
 .typo h5, .typo h6, .typo-h5, .typo-h6 {
