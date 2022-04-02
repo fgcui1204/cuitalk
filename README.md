@@ -17,7 +17,7 @@ pwd:123456
 
 ```
 username: root
-pwd: 19921204cfg
+pwd: xxxxx
 ```
 
 
